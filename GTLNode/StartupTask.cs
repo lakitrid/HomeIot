@@ -21,19 +21,10 @@ namespace GTLNode
         public void Run(IBackgroundTaskInstance taskInstance)
         {
             this._powerService = new PowerService();
-
-            Timer timer = new Timer(Tick, null, (int)TimeSpan.FromSeconds(5).TotalMilliseconds, (int)TimeSpan.FromSeconds(5).TotalMilliseconds);
             
             AutoResetEvent handle = new AutoResetEvent(false);
 
             handle.WaitOne();
-        }
-
-        private void Tick(object state)
-        {
-            string test = "test value";
-
-            
         }
     }
 }
