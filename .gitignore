@@ -210,3 +210,13 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+#Solution specific exclude
+*.min.js
+*.min.css
+*.eot
+*.svg
+*.ttf
+*.woff
+*.woff2
+*.otf
