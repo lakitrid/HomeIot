@@ -46,6 +46,6 @@
     "**.vspscc"
   ],
   "scripts": {
-    "prepublish": [ "npm install" ]
+    "prepublish": [ "npm install", "grunt build" ]
   }
 }

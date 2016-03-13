@@ -1,5 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<div ng-app="homeIot">
+    <div ng-view></div>
+</div>
 
-
+<script>
+    angular.module("homeIot").constant("title", @ViewBag.Title);
+    angular.module("homeIot").constant("version", @ViewBag.Version);
+</script>
