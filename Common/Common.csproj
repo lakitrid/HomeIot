@@ -39,10 +39,19 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\ErrorMessage.cs" />
-    <Compile Include="Domain\TeleInfoData.cs" />
+    <Compile Include="..\Common.Core\Domain\ErrorMessage.cs">
+      <Link>Domain\ErrorMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\TeleInfoData.cs">
+      <Link>Domain\TeleInfoData.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\TimeSerie.cs">
+      <Link>Domain\TimeSerie.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Services\SerializeHelper.cs">
+      <Link>Services\SerializeHelper.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\SerializeHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

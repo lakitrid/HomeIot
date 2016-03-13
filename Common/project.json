@@ -13,5 +13,5 @@
     "dotnet": {
       "imports": "portable-net452+win81"
     }
-  }
+  }  
 }
