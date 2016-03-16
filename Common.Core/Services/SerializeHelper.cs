@@ -30,5 +30,30 @@ namespace Common.Services
                 return writer.ToString();
             }
         }
+
+        public static T Deserialize<T>(byte[] rawMessage) where T : class
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.None,
+                Culture = CultureInfo.InvariantCulture
+            };
+
+            JsonSerializer serializer = JsonSerializer.Create(settings);
+            try
+            {
+                string text = Encoding.UTF8.GetString(rawMessage, 0, rawMessage.Length);
+
+                using (TextReader textReader = new StringReader(text))
+                {
+                    T result = serializer.Deserialize<T>(new JsonTextReader(textReader));
+                    return result;
+                }
+            }
+            catch (Exception exc)
+            {
+                return null;
+            }
+        }
     }
 }

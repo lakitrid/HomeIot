@@ -10,7 +10,11 @@ namespace WebSite.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<TaskInfo> Tasks { get; set; }
+
         public DbSet<TimeSerie> TimeSeries { get; set; }
+
+        public DbSet<TimeSerie> DayTimeSeries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
