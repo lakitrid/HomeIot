@@ -141,14 +141,7 @@ namespace GTLNode.Services
                         }
                     }
 
-                    Message message = new Message
-                    {
-                        Date = infoData.Date,
-                        Type = MessageType.Power,
-                        MessageContent = infoData
-                    };
-
-                    Debug.WriteLine($"End Decoding loop {SerializeHelper.Serialize(message)}");
+                    Debug.WriteLine($"End Decoding loop {SerializeHelper.Serialize(infoData)}");
 
                     MQTTService.Instance.PublishMessage(MQTTService.PowerRoutingKey, SerializeHelper.Serialize(infoData));
                 }

@@ -29,33 +29,28 @@ namespace HomeBrain.Services
         {
             Message message = SerializeHelper.Deserialize<Message>(rawMessage);
 
-            if (message != null)
+            if (message is TeleInfoData)
             {
-                switch (message.Type)
-                {
-                    case MessageType.Power:
-                        return this.ManagePowerMessage(message);
-                }
+                this.ManageMessage(message as TeleInfoData);
             }
 
             return true;
         }
 
-        private bool ManagePowerMessage(Message message)
+        private bool ManageMessage(TeleInfoData message)
         {
             try
             {
                 ApplicationDbContext context = new ApplicationDbContext();
-                TeleInfoData data = message.MessageContent as TeleInfoData;
 
-                if (data != null)
+                if (message != null)
                 {
-                    this.AddTimeSerie(message.Date, data.PeekHourCpt, "POWER_PEEK_CPT", context);
-                    this.AddTimeSerie(message.Date, data.LowHourCpt, "POWER_LOW_CPT", context);
-                    this.AddTimeSerie(message.Date, data.ActualIntensity, "POWER_INTENSITY", context);
+                    this.AddTimeSerie(message.Date, message.PeekHourCpt, "POWER_PEEK_CPT", context);
+                    this.AddTimeSerie(message.Date, message.LowHourCpt, "POWER_LOW_CPT", context);
+                    this.AddTimeSerie(message.Date, message.ActualIntensity, "POWER_INTENSITY", context);
 
-                    this.UpdateDayTimeSerie(message.Date, data.PeekHourCpt, "POWER_PEEK_CPT", context);
-                    this.UpdateDayTimeSerie(message.Date, data.PeekHourCpt, "POWER_LOW_CPT", context);
+                    this.UpdateDayTimeSerie(message.Date, message.PeekHourCpt, "POWER_PEEK_CPT", context);
+                    this.UpdateDayTimeSerie(message.Date, message.PeekHourCpt, "POWER_LOW_CPT", context);
                 }
 
                 context.SaveChanges();

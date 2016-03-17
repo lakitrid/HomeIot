@@ -6,7 +6,11 @@
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "net451": { },
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Runtime.Serialization": "4.0.0.0"
+      }
+    },
     "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -18,6 +22,7 @@
     }
   },
   "dependencies": {
-    "Newtonsoft.Json": "8.0.2"
+    "Newtonsoft.Json": "8.0.2",
+    "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516"
   }
 }

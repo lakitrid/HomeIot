@@ -20,7 +20,8 @@ namespace Common.Services
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 Formatting = Formatting.None,
-                Culture = CultureInfo.InvariantCulture
+                Culture = CultureInfo.InvariantCulture,
+                TypeNameHandling = TypeNameHandling.All
             };
 
             JsonSerializer serializer = JsonSerializer.Create(settings);
@@ -36,7 +37,8 @@ namespace Common.Services
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 Formatting = Formatting.None,
-                Culture = CultureInfo.InvariantCulture
+                Culture = CultureInfo.InvariantCulture,
+                TypeNameHandling = TypeNameHandling.All
             };
 
             JsonSerializer serializer = JsonSerializer.Create(settings);

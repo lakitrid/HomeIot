@@ -39,6 +39,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Common.Core\Domain\Command.cs">
+      <Link>Domain\Command.cs</Link>
+    </Compile>
     <Compile Include="..\Common.Core\Domain\ErrorMessage.cs">
       <Link>Domain\ErrorMessage.cs</Link>
     </Compile>
@@ -53,9 +56,6 @@
     </Compile>
     <Compile Include="..\Common.Core\Domain\TaskInfo.cs">
       <Link>Domain\TaskInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Common.Core\Domain\TaskType.cs">
-      <Link>Domain\TaskType.cs</Link>
     </Compile>
     <Compile Include="..\Common.Core\Domain\TeleInfoData.cs">
       <Link>Domain\TeleInfoData.cs</Link>

@@ -25,11 +25,6 @@ namespace Common.Domain
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or set the Type of the task
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or sets the description of the task
         /// </summary>
         public string Description { get; set; }

@@ -16,6 +16,8 @@ namespace HomeBrain.DataAccess
 
         public DbSet<TaskInfo> Tasks { get; set; }
 
+        public DbSet<Command> Commands { get; set; }
+
         public DbSet<TimeSerie> TimeSeries { get; set; }
 
         public DbSet<TimeSerie> DayTimeSeries { get; set; }
