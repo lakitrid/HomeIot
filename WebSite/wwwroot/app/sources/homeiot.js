@@ -1,6 +1,9 @@
 ﻿angular.module("homeIot", [
-    "route"
+        "ngComponentRouter",
+        "homeIot.home",
+        "homeIot.dashboard",
+        "homeIot.detail"
 ])
-.config([function () {
-}])
-;
+    .config([function () {
+    }])
+    .value('$routerRootComponent', 'home');

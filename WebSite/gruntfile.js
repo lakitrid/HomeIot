@@ -30,6 +30,7 @@ module.exports = function (grunt) {
                     { expand: true, flatten: true, cwd: 'node_modules/font-awesome/fonts', src: ['**'], dest: 'wwwroot/fonts/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['**/*.min.css'], dest: 'wwwroot/css/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['angular*/**/*.min.js'], dest: 'wwwroot/lib/' },
+                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['@angular*/**/angular_1_*.js'], dest: 'wwwroot/lib/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['font-awesome/**/*.min.js'], dest: 'wwwroot/lib/' }
                 ]
             }
