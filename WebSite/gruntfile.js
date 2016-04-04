@@ -8,6 +8,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks("grunt-contrib-sass");
 
     grunt.initConfig({
         uglify: {
@@ -24,14 +25,24 @@ module.exports = function (grunt) {
             }
         },
 
+        sass: {
+            dist: {
+                options: 'expanded'
+            },
+            files: {
+                'wwwroot/css/material.min.css': 'wwwroot/css/sources/material.scss'
+            }            
+        },
+
         copy: {
             main: {
                 files: [
                     { expand: true, flatten: true, cwd: 'node_modules/font-awesome/fonts', src: ['**'], dest: 'wwwroot/fonts/' },
-                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['**/*.min.css'], dest: 'wwwroot/css/' },
+                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['**/*.min.css', '!materialize-css/**/*.min.css'], dest: 'wwwroot/css/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['angular*/**/*.min.js'], dest: 'wwwroot/lib/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['@angular*/**/angular_1_*.js'], dest: 'wwwroot/lib/' },
-                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['font-awesome/**/*.min.js'], dest: 'wwwroot/lib/' }
+                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['font-awesome/**/*.min.js'], dest: 'wwwroot/lib/' },
+                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['materialize-css/font/**/*Icons*', 'materialize-css/font/**/Roboto*'], dest: 'wwwroot/fonts/' }
                 ]
             }
         },

@@ -7,6 +7,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-uglify": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-verbosity": "^0.2.2",
     "angular": "^1.5.0",
     "font-awesome": "^4.5.0",
     "materialize-css": "^0.97.5"

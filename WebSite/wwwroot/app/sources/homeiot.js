@@ -2,7 +2,8 @@
         "ngComponentRouter",
         "homeIot.home",
         "homeIot.dashboard",
-        "homeIot.detail"
+        "homeIot.settings",
+        "homeIot.power"
 ])
     .config([function () {
     }])
