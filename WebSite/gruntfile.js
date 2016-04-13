@@ -27,11 +27,10 @@ module.exports = function (grunt) {
 
         sass: {
             dist: {
-                options: 'expanded'
-            },
-            files: {
-                'wwwroot/css/material.min.css': 'wwwroot/css/sources/material.scss'
-            }            
+                files: {
+                    'wwwroot/css/material.css': 'wwwroot/css/sources/material.scss'
+                }
+            }
         },
 
         copy: {

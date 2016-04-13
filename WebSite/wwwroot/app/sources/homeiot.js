@@ -3,7 +3,11 @@
         "homeIot.home",
         "homeIot.dashboard",
         "homeIot.settings",
-        "homeIot.power"
+        "homeIot.power",
+        "homeIot.admin",
+        "homeIot.users",
+        "homeIot.userList",
+        "homeIot.useredit"
 ])
     .config([function () {
     }])

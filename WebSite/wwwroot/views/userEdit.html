@@ -1,0 +1,33 @@
+﻿<form name="userForm">
+    <div>
+
+        <div>
+            <input type="text" ng-model="userEdit.user.Login" required title="Login" />
+        </div>
+        <div>
+            <input type="email" ng-model="userEdit.user.Mail" required title="Mail"  />
+        </div>
+        <div ng-if="userEdit.newUser">
+            <input type="password" ng-model="userEdit.user.Password" required title="Mot de passe"  />
+        </div>
+        <div ng-if="userEdit.newUser">
+            <input type="password" ng-model="userEdit.user.ConfirmPassword" required title="Confirmation du mot de passe"  />
+        </div>
+        <div>
+            <div ng-repeat="error in userEdit.errors">
+                <div>
+                    {{error}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="btn" ng-link="['UserList']">
+            <i></i>Retour
+        </button>
+        <button class="btn" ng-click="userEdit.edit()">
+            <i></i>Enregistrer
+        </button>
+    </div>
+</form>

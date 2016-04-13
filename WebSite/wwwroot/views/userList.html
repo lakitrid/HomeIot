@@ -1,0 +1,21 @@
+﻿<div>
+    <a ng-link="['UserEdit', {login: undefined}]"><i></i>Ajouter</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Mail</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in userList.users">
+            <td>{{user.Login}}</td>
+            <td>{{user.Mail}}</td>
+            <td>
+                <i class="" ng-link="['UserEdit', {login: user.Login}]">Editer</i>
+            </td>
+        </tr>
+    </tbody>
+</table>
