@@ -41,6 +41,8 @@ module.exports = function (grunt) {
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['angular*/**/*.min.js'], dest: 'wwwroot/lib/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['@angular*/**/angular_1_*.js'], dest: 'wwwroot/lib/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['font-awesome/**/*.min.js'], dest: 'wwwroot/lib/' },
+                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['materialize-css/dist/**/*.min.js'], dest: 'wwwroot/lib/' },
+                    { expand: true, flatten: true, cwd: 'node_modules/', src: ['jquery/dist/**/jquery.min.js'], dest: 'wwwroot/lib/' },
                     { expand: true, flatten: true, cwd: 'node_modules/', src: ['materialize-css/font/**/*Icons*', 'materialize-css/font/**/Roboto*'], dest: 'wwwroot/fonts/' }
                 ]
             }

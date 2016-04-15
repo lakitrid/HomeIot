@@ -12,3 +12,4 @@
 /// <reference path="app/sources/users.js" />
 /// <reference path="lib/angular.min.js" />
 /// <reference path="lib/angular_1_router.js" />
+/// <reference path="lib/jquery.min.js" />

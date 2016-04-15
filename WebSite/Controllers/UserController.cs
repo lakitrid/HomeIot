@@ -63,6 +63,24 @@ namespace WebSite.Controllers
             return result.Errors.Select(e => e.Description).ToArray();
         }
 
+        [HttpPut, Route("{oldLogin}")]
+        public async Task<string[]> UpdateUser([FromRoute] string oldLogin, [FromBody]User value)
+        {
+            ApplicationUser user = await this._userManager.FindByNameAsync(oldLogin);
+            user.UserName = value.Login;
+            user.Email = value.Mail;
+
+            var result = await this._userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                this.Response.StatusCode = (int)HttpStatusCode.OK;
+                return null;
+            }
+
+            this.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            return result.Errors.Select(e => e.Description).ToArray();
+        }
 
         [HttpDelete("{login}")]
         public void Delete([FromRoute]string login)
