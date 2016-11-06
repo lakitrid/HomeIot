@@ -1,8 +1,7 @@
-﻿<div ng-app="homeIot">
-    <div ng-view></div>
+﻿<div ng-app="homeIot" id="main-content">
+    <home></home>
 </div>
 
 <script>
-    angular.module("homeIot").constant("title", @ViewBag.Title);
-    angular.module("homeIot").constant("version", @ViewBag.Version);
+    angular.module("homeIot").constant("version", "@ViewBag.Version");
 </script>

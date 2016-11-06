@@ -20,7 +20,8 @@ namespace Common.Services
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 Formatting = Formatting.None,
-                Culture = CultureInfo.InvariantCulture
+                Culture = CultureInfo.InvariantCulture,
+                TypeNameHandling = TypeNameHandling.All
             };
 
             JsonSerializer serializer = JsonSerializer.Create(settings);
@@ -28,6 +29,32 @@ namespace Common.Services
             {
                 serializer.Serialize(writer, element);
                 return writer.ToString();
+            }
+        }
+
+        public static T Deserialize<T>(byte[] rawMessage) where T : class
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.None,
+                Culture = CultureInfo.InvariantCulture,
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            JsonSerializer serializer = JsonSerializer.Create(settings);
+            try
+            {
+                string text = Encoding.UTF8.GetString(rawMessage, 0, rawMessage.Length);
+
+                using (TextReader textReader = new StringReader(text))
+                {
+                    T result = serializer.Deserialize<T>(new JsonTextReader(textReader));
+                    return result;
+                }
+            }
+            catch (Exception exc)
+            {
+                return null;
             }
         }
     }

@@ -13,8 +13,61 @@ namespace WebSite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-beta8")
+                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Common.Domain.Command", b =>
+                {
+                    b.Property<decimal>("Id");
+
+                    b.Property<string>("Code");
+
+                    b.Property<decimal>("CommandValue");
+
+                    b.Property<decimal?>("TaskId");
+
+                    b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("Common.Domain.TaskInfo", b =>
+                {
+                    b.Property<decimal>("Id");
+
+                    b.Property<bool>("Active");
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Description");
+
+                    b.Property<TimeSpan>("Duration");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<bool>("IsSpecificTask");
+
+                    b.Property<TimeSpan>("Start");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<int>("TypeOfDay");
+
+                    b.Property<bool>("isFullDay");
+
+                    b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("Common.Domain.TimeSerie", b =>
+                {
+                    b.Property<decimal>("Id");
+
+                    b.Property<string>("Code");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<decimal>("Value");
+
+                    b.HasKey("Id");
+                });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRole", b =>
                 {
@@ -46,7 +99,8 @@ namespace WebSite.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("RoleId");
+                    b.Property<string>("RoleId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -62,7 +116,8 @@ namespace WebSite.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -77,7 +132,8 @@ namespace WebSite.Migrations
 
                     b.Property<string>("ProviderDisplayName");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -141,6 +197,13 @@ namespace WebSite.Migrations
                         .HasAnnotation("Relational:Name", "UserNameIndex");
 
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
+                });
+
+            modelBuilder.Entity("Common.Domain.Command", b =>
+                {
+                    b.HasOne("Common.Domain.TaskInfo")
+                        .WithMany()
+                        .HasForeignKey("TaskId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>

@@ -4,13 +4,8 @@ using System.Text;
 
 namespace Common.Domain
 {
-    public class TeleInfoData
+    public class TeleInfoData : Message
     {
-        /// <summary>
-        /// Date of the Data sample
-        /// </summary>
-        public DateTime Date { get; set; }
-
         /// <summary>
         /// Meter Id
         /// </summary>

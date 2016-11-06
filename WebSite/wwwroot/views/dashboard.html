@@ -1,0 +1,14 @@
+﻿<div class="row">
+    <div ng-repeat="card in dashboard.cards" class="col s12 m4 l3">
+        <div class="card">
+            <div class="card-content">
+                <i class="material-icons medium">{{card.Icon}}</i>
+                <span class="card-value">{{card.Value}}</span>
+                <span class="card-unit">{{card.UnitLabel}}</span>
+            </div>
+            <div class="card-action">
+                <a ng-link="[card.ActionRoute]">Detail</a>
+            </div>
+        </div>
+    </div>
+</div>

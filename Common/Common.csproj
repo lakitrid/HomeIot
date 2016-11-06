@@ -39,14 +39,32 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Common.Core\Domain\Command.cs">
+      <Link>Domain\Command.cs</Link>
+    </Compile>
     <Compile Include="..\Common.Core\Domain\ErrorMessage.cs">
       <Link>Domain\ErrorMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\Message.cs">
+      <Link>Domain\Message.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\MessageType.cs">
+      <Link>Domain\MessageType.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\Status.cs">
+      <Link>Domain\Status.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\TaskInfo.cs">
+      <Link>Domain\TaskInfo.cs</Link>
     </Compile>
     <Compile Include="..\Common.Core\Domain\TeleInfoData.cs">
       <Link>Domain\TeleInfoData.cs</Link>
     </Compile>
     <Compile Include="..\Common.Core\Domain\TimeSerie.cs">
       <Link>Domain\TimeSerie.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Core\Domain\TypeOfDay.cs">
+      <Link>Domain\TypeOfDay.cs</Link>
     </Compile>
     <Compile Include="..\Common.Core\Services\SerializeHelper.cs">
       <Link>Services\SerializeHelper.cs</Link>
