@@ -19,10 +19,11 @@ namespace GTLNode.Services
         private readonly TimeSpan period;
         private readonly TimeSpan start;
         private Timer _timer;
+        private object readLock = new object();
 
         public PowerService()
         {
-            this.period = TimeSpan.FromMinutes(2);
+            this.period = TimeSpan.FromSeconds(60);
             this.start = TimeSpan.FromSeconds(5);
 
             this.Init();
@@ -72,6 +73,18 @@ namespace GTLNode.Services
         {
             Debug.WriteLine("Start reading method");
 
+            try
+            {
+                bool result = await this.Read();
+            }
+            catch (Exception exc)
+            {
+                Debug.WriteLine($"Error while reading : {exc.Message}");
+            }
+        }
+
+        private async Task<bool> Read()
+        {
             if (await this.InitSerial())
             {
                 bool keep = false;
@@ -148,6 +161,8 @@ namespace GTLNode.Services
 
                 this.CloseSerial();
             }
+
+            return true;
         }
 
         private async Task<string[]> ReadLines()
@@ -205,7 +220,6 @@ namespace GTLNode.Services
 
         private async Task<bool> InitSerial()
         {
-
             Debug.WriteLine("Start InitSerial method");
 
             try
