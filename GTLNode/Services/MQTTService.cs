@@ -17,6 +17,7 @@ namespace GTLNode.Services
         internal static readonly string PowerErrorRoutingKey = "GTLNode-Power-Error";
         internal static readonly string PowerRoutingKey = "GTLNode-Power";
         internal static readonly string InfoRoutingKey = "GTLNode-Info";
+        internal static readonly string TempRoutingKey = "Temperature";
 
         private MqttClient _client;
 

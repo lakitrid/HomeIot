@@ -96,9 +96,13 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\ScheduleRunner.cs" />
     <Compile Include="Services\HeaterService.cs" />
     <Compile Include="Services\MQTTService.cs" />
     <Compile Include="Services\PowerService.cs" />
+    <Compile Include="Services\SchedulerService.cs" />
+    <Compile Include="Services\TempOneWireService.cs" />
     <Compile Include="StartupTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

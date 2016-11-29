@@ -1,5 +1,6 @@
 ﻿using Common.Domain;
 using Common.Services;
+using GTLNode.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,36 +17,20 @@ namespace GTLNode.Services
     internal class PowerService
     {
         private SerialDevice _serialPort;
-        private readonly TimeSpan period;
-        private readonly TimeSpan start;
-        private Timer _timer;
-        private object readLock = new object();
 
         public PowerService()
         {
-            this.period = TimeSpan.FromSeconds(60);
-            this.start = TimeSpan.FromSeconds(5);
+            Schedule schedule = new Schedule
+            {
+                Interval = 120,
+                StartDelay = 10,
+                Name = nameof(PowerService)
+            };
 
-            this.Init();
+            SchedulerService.Instance.RegisterAction(this.Run, schedule);
         }
 
         public AutoResetEvent Handle { get; private set; }
-
-        public void Stop()
-        {
-            this._timer.Dispose();
-        }
-
-        /// <summary>
-        /// Initialaze the running task
-        /// </summary>
-        private void Init()
-        {
-            this.Handle = new AutoResetEvent(false);
-            Debug.WriteLine("Init power service");
-
-            this._timer = new Timer(this.Run, null, this.start, this.period);
-        }
 
         /// <summary>
         /// Running Task that will read the Serial port at time interval
@@ -68,8 +53,7 @@ namespace GTLNode.Services
         /// MOTDETAT 000000 B
         /// End with ETX (0x03)
         /// </summary>
-        /// <param name="state">object state</param>
-        private async void Run(object state)
+        private async void Run()
         {
             Debug.WriteLine("Start reading method");
 

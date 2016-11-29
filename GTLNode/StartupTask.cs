@@ -14,17 +14,35 @@ using GTLNode.Services;
 
 namespace GTLNode
 {
+
     public sealed class StartupTask : IBackgroundTask
     {
+        private BackgroundTaskDeferral _deferral;
         private PowerService _powerService;
 
         public void Run(IBackgroundTaskInstance taskInstance)
         {
+            // Gets the deferral to maintain the background task running
+            this._deferral = taskInstance.GetDeferral();
+
+            taskInstance.Canceled += TaskInstance_Canceled;
+
+            SchedulerService.Instance.Start();
+
             this._powerService = new PowerService();
-            
+
             AutoResetEvent handle = new AutoResetEvent(false);
 
             handle.WaitOne();
+
+            SchedulerService.Instance.Stop();
+
+            this._deferral.Complete();
+        }
+
+        private void TaskInstance_Canceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
+        {
+            SchedulerService.Instance.Stop();
         }
     }
 }
